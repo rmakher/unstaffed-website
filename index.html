@@ -252,8 +252,8 @@ footer { padding: 56px 48px; border-top: 1px solid var(--border); display: flex;
 .mkt-filter { display: flex; gap: 2px; background: var(--border); padding: 2px; border-radius: 6px; }
 .filter-btn { font-family: 'DM Mono', monospace; font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; padding: 10px 18px; background: transparent; border: none; color: var(--text-2); cursor: none; border-radius: 4px; transition: background .2s, color .2s; }
 .filter-btn.active { background: var(--surface2); color: var(--accent); }
-.products-grid-mkt { padding: 0 48px 80px; display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; background: var(--border); }
-.product-listing { background: var(--surface); padding: 40px 36px; position: relative; overflow: hidden; cursor: none; transition: background .3s; }
+.products-grid-mkt { padding: 0 48px 80px; display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; background: var(--border); align-items: stretch; }
+.product-listing { background: var(--surface); padding: 40px 36px; position: relative; overflow: hidden; cursor: none; transition: background .3s; display: flex; flex-direction: column; }
 .product-listing:hover { background: var(--surface2); }
 .product-listing::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform .35s; }
 .product-listing:hover::before { transform: scaleX(1); }
@@ -263,13 +263,13 @@ footer { padding: 56px 48px; border-top: 1px solid var(--border); display: flex;
 .pl-icon { font-size: 2rem; margin-bottom: 16px; }
 .pl-name { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 700; line-height: 1.2; margin-bottom: 10px; }
 .pl-desc { font-size: .84rem; color: var(--text-2); line-height: 1.7; margin-bottom: 28px; }
-.pl-includes { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 28px; }
+.pl-includes { list-style: none; display: flex; flex-direction: column; gap: 8px; margin-bottom: 28px; flex: 1; }
 .pl-includes li { font-size: .8rem; color: var(--text-2); display: flex; align-items: flex-start; gap: 8px; line-height: 1.4; }
 .pl-includes li::before { content: '→'; color: var(--accent); flex-shrink: 0; }
-.pl-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 24px; border-top: 1px solid var(--border); }
+.pl-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 24px; border-top: 1px solid var(--border); margin-top: auto; }
 .pl-price { font-family: 'Syne', sans-serif; font-size: 1.6rem; font-weight: 800; }
 .pl-price-note { font-family: 'DM Mono', monospace; font-size: .6rem; color: var(--text-3); letter-spacing: .08em; }
-.pl-btn { font-family: 'DM Mono', monospace; font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; background: var(--accent); color: #000; padding: 10px 18px; border-radius: 4px; text-decoration: none; cursor: none; transition: opacity .2s; font-weight: 500; }
+.pl-btn { font-family: 'DM Mono', monospace; font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; background: var(--accent); color: #000; padding: 10px 18px; border-radius: 4px; text-decoration: none; cursor: none; transition: opacity .2s; font-weight: 500; white-space: nowrap; }
 .pl-btn:hover { opacity: .85; }
 .pl-btn-soon { background: var(--border2); color: var(--text-3); cursor: not-allowed; }
 .coming-soon-overlay { position: absolute; inset: 0; background: rgba(10,10,10,.7); backdrop-filter: blur(2px); display: flex; align-items: center; justify-content: center; z-index: 3; }
@@ -510,33 +510,33 @@ footer { padding: 56px 48px; border-top: 1px solid var(--border); display: flex;
 
 <!-- NAV -->
 <nav id="nav">
-  <a class="nav-logo" onclick="showPage('home')" style="cursor:none"><span>UN</span>STAFFED</a>
+  <a class="nav-logo" onclick="showPage('home');return false;" href="#" style="cursor:none"><span>UN</span>STAFFED</a>
   <ul class="nav-links">
-    <li><a onclick="showPage('home')" href="#">Home</a></li>
-    <li><a onclick="showPage('products')" href="#">Products</a></li>
-    <li><a onclick="showPage('agents')" href="#">AI Agents</a></li>
-    <li><a onclick="showPage('dfy')" href="#">Done For You</a></li>
+    <li><a onclick="showPage('home');return false;" href="#">Home</a></li>
+    <li><a onclick="showPage('products');return false;" href="#">Products</a></li>
+    <li><a onclick="showPage('agents');return false;" href="#">AI Agents</a></li>
+    <li><a onclick="showPage('dfy');return false;" href="#">Done For You</a></li>
   </ul>
   <div class="nav-dropdown">
     <button class="nav-dropdown-toggle" id="ddToggle" onclick="toggleDropdown()">
       Get Started <em class="chevron">▼</em>
     </button>
     <div class="nav-dropdown-menu" id="ddMenu">
-      <a class="dropdown-item" onclick="showPage('products')" href="#">
+      <a class="dropdown-item" onclick="showPage('products');return false;" href="#">
         <div class="dropdown-item-icon">📦</div>
         <div class="dropdown-item-text">
           <div class="dropdown-item-label">Digital Products</div>
           <div class="dropdown-item-sub">PDFs, prompt libraries & Notion templates</div>
         </div>
       </a>
-      <a class="dropdown-item" onclick="showPage('agents')" href="#">
+      <a class="dropdown-item" onclick="showPage('agents');return false;" href="#">
         <div class="dropdown-item-icon">🤖</div>
         <div class="dropdown-item-text">
           <div class="dropdown-item-label">AI Agent Tools <span class="dropdown-badge">Coming Soon</span></div>
           <div class="dropdown-item-sub">Plug-and-play agents for your business</div>
         </div>
       </a>
-      <a class="dropdown-item" onclick="showPage('dfy')" href="#">
+      <a class="dropdown-item" onclick="showPage('dfy');return false;" href="#">
         <div class="dropdown-item-icon">⚙️</div>
         <div class="dropdown-item-text">
           <div class="dropdown-item-label">Done For You</div>
@@ -706,9 +706,9 @@ footer { padding: 56px 48px; border-top: 1px solid var(--border); display: flex;
     <div class="footer-logo"><span>UN</span>STAFFED</div>
     <div class="footer-copy">© 2026 Unstaffed — unstaffed.co</div>
     <ul class="footer-links">
-      <li><a onclick="showPage('products')" href="#">Products</a></li>
-      <li><a onclick="showPage('agents')" href="#">Agents</a></li>
-      <li><a onclick="showPage('dfy')" href="#">Done For You</a></li>
+      <li><a onclick="showPage('products');return false;" href="#">Products</a></li>
+      <li><a onclick="showPage('agents');return false;" href="#">Agents</a></li>
+      <li><a onclick="showPage('dfy');return false;" href="#">Done For You</a></li>
       <li><a href="https://x.com/unstaffedco" target="_blank">X / Twitter</a></li>
     </ul>
   </footer>
@@ -807,9 +807,9 @@ footer { padding: 56px 48px; border-top: 1px solid var(--border); display: flex;
     <div class="footer-logo"><span>UN</span>STAFFED</div>
     <div class="footer-copy">© 2026 Unstaffed — unstaffed.co</div>
     <ul class="footer-links">
-      <li><a onclick="showPage('home')" href="#">Home</a></li>
-      <li><a onclick="showPage('agents')" href="#">Agents</a></li>
-      <li><a onclick="showPage('dfy')" href="#">Done For You</a></li>
+      <li><a onclick="showPage('home');return false;" href="#">Home</a></li>
+      <li><a onclick="showPage('agents');return false;" href="#">Agents</a></li>
+      <li><a onclick="showPage('dfy');return false;" href="#">Done For You</a></li>
     </ul>
   </footer>
 </div>
@@ -902,9 +902,9 @@ footer { padding: 56px 48px; border-top: 1px solid var(--border); display: flex;
     <div class="footer-logo"><span>UN</span>STAFFED</div>
     <div class="footer-copy">© 2026 Unstaffed — unstaffed.co</div>
     <ul class="footer-links">
-      <li><a onclick="showPage('home')" href="#">Home</a></li>
-      <li><a onclick="showPage('products')" href="#">Products</a></li>
-      <li><a onclick="showPage('dfy')" href="#">Done For You</a></li>
+      <li><a onclick="showPage('home');return false;" href="#">Home</a></li>
+      <li><a onclick="showPage('products');return false;" href="#">Products</a></li>
+      <li><a onclick="showPage('dfy');return false;" href="#">Done For You</a></li>
     </ul>
   </footer>
 </div>
@@ -1024,9 +1024,9 @@ footer { padding: 56px 48px; border-top: 1px solid var(--border); display: flex;
     <div class="footer-logo"><span>UN</span>STAFFED</div>
     <div class="footer-copy">© 2026 Unstaffed — unstaffed.co</div>
     <ul class="footer-links">
-      <li><a onclick="showPage('home')" href="#">Home</a></li>
-      <li><a onclick="showPage('products')" href="#">Products</a></li>
-      <li><a onclick="showPage('agents')" href="#">Agents</a></li>
+      <li><a onclick="showPage('home');return false;" href="#">Home</a></li>
+      <li><a onclick="showPage('products');return false;" href="#">Products</a></li>
+      <li><a onclick="showPage('agents');return false;" href="#">Agents</a></li>
     </ul>
   </footer>
 </div>
